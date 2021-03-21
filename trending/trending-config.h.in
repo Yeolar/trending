@@ -1,0 +1,9 @@
+#pragma once
+
+/* meta */
+
+#define TRENDING_PACKAGE "@PROJECT_NAME@"
+#define TRENDING_VERSION "@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@"
+
+/* compile tests for keyword, lib, function, ... */
+

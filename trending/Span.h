@@ -1,3 +1,7 @@
+/*
+ * Copyright 2021 Yeolar
+ */
+
 #pragma once
 
 #include "trending/span.hpp"
