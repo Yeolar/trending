@@ -59,3 +59,49 @@ if(GTEST_FOUND)
   enable_testing()
 endif()
 
+# CmakeConfig
+include(CMakePackageConfigHelpers)
+
+install(
+  EXPORT trending-targets
+  NAMESPACE trending::
+  FILE trending-targets.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/trending
+)
+
+configure_package_config_file(
+  ${CMAKE_MODULE_PATH}/trending-config.cmake.in
+  trending-config.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/trending
+  NO_CHECK_REQUIRED_COMPONENTS_MACRO
+  PATH_VARS CMAKE_INSTALL_INCLUDEDIR
+)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/trending-config.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/trending
+)
+
+# Pack
+set(CPACK_SYSTEM_NAME "amd64")
+find_program(DPKG_CMD dpkg)
+if(DPKG_CMD)
+  execute_process(
+    COMMAND "${DPKG_CMD}" --print-architecture
+    OUTPUT_VARIABLE CPACK_SYSTEM_NAME
+    OUTPUT_STRIP_TRAILING_WHITESPACE)
+endif()
+
+include(InstallRequiredSystemLibraries)
+if(DPKG_CMD)
+  set(CPACK_GENERATOR "DEB;TXZ")
+else()
+  set(CPACK_GENERATOR "TXZ")
+endif()
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_CONTACT "yeolar@qq.com")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Trending library.")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "")
+include(CPack)
+

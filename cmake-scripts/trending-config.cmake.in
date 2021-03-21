@@ -1,0 +1,24 @@
+#
+# CMake package configuration file for trending
+#
+# Defines the target "trending::trending"
+# Add this to your target_link_libraries() call to depend on trending.
+#
+# Also sets the variables TRENDING_INCLUDE_DIR and TRENDING_LIBRARY.
+# However, in most cases using the trending::trending target is sufficient,
+# and you won't need these variables.
+#
+
+@PACKAGE_INIT@
+
+set_and_check(TRENDING_INCLUDE_DIR "@PACKAGE_CMAKE_INSTALL_INCLUDEDIR@")
+
+if(NOT TARGET trending::trending)
+  include(${CMAKE_CURRENT_LIST_DIR}/trending-targets.cmake)
+endif()
+
+set(TRENDING_LIBRARY trending::trending)
+
+if(NOT TRENDING_FIND_QUIETLY)
+  message(STATUS "Found trending: ${PACKAGE_PREFIX_DIR}")
+endif()

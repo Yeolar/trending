@@ -32,4 +32,5 @@
 *.app
 
 /_build
+/_deps
 /trending/trending-config.h
