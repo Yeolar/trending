@@ -52,6 +52,11 @@ add_library(trending
   $<TARGET_OBJECTS:trending_base>
 )
 
+install(TARGETS trending
+  EXPORT trending-targets
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
 # Binary
 
 # Test
