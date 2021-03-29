@@ -4,6 +4,7 @@
 
 #pragma once
 
+#define span_FEATURE_MAKE_SPAN 1
 #include "trending/span.hpp"
 
 namespace trending {

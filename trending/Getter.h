@@ -11,22 +11,44 @@
 namespace trending {
 
 /*
- * sp[-k-n:-k]
+ * array[-k-n:-k]
  */
-template <class T, class F>
-std::vector<double> getLatest(F get, span<T> sp, int k, int n) {
+template <class T>
+std::vector<double> getLatest(T& array, int k, int n) {
   std::vector<double> result;
-  for (; k < sp.size() && n > 0; ++k, --n) {
-    result.push_back(get(sp[k]));
+  for (k = array.size() - k - 1; k >= 0 && n > 0; --k, --n) {
+    double v = array[k];
+    result.push_back(v);
   }
   return result;
 }
 
 template <class T, class F>
-std::vector<double> getLatestLt0(F get, span<T> sp, int k, int n) {
+std::vector<double> getLatest(T& array, int k, int n, F get) {
   std::vector<double> result;
-  for (; k < sp.size() && n > 0; ++k, --n) {
-    double v = get(sp[k]);
+  for (k = array.size() - k - 1; k >= 0 && n > 0; --k, --n) {
+    double v = get(array[k]);
+    result.push_back(v);
+  }
+  return result;
+}
+
+template <class T>
+std::vector<double> getLatestLt0(T& array, int k, int n) {
+  std::vector<double> result;
+  for (k = array.size() - k - 1; k >= 0 && n > 0; --k, --n) {
+    double v = array[k];
+    if (v >= 0) break;
+    result.push_back(v);
+  }
+  return result;
+}
+
+template <class T, class F>
+std::vector<double> getLatestLt0(T& array, int k, int n, F get) {
+  std::vector<double> result;
+  for (k = array.size() - k - 1; k >= 0 && n > 0; --k, --n) {
+    double v = get(array[k]);
     if (v >= 0) break;
     result.push_back(v);
   }

@@ -62,6 +62,8 @@ install(TARGETS trending
 # Test
 if(GTEST_FOUND)
   enable_testing()
+  include_directories(${GTEST_INCLUDE_DIR})
+  add_subdirectory(trending/test)
 endif()
 
 # CmakeConfig
