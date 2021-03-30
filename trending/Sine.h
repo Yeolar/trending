@@ -13,9 +13,9 @@ namespace trending {
  */
 
 struct Sine {
-  double a;
-  double b;
-  double sd;
+  double a = 0;
+  double b = 0;
+  double sd = 0;
 };
 
 Sine sine(span<double> sp);

@@ -2,5 +2,8 @@
 
 test_sources(
   AvgTest.cpp
+  ConvexTest.cpp
   GetterTest.cpp
+  LinearTest.cpp
+  SineTest.cpp
 )

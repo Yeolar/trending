@@ -21,8 +21,10 @@ static double slope(double y1, double y2, int a, int b) {
 
 Convex convex(span<double> sp) {
   Convex result;
-  result.slop = 0;
-  result.diff = 0;
+
+  if (sp.empty()) {
+    return result;
+  }
 
   double current = sp.back();
   std::vector<double> values;
@@ -51,7 +53,6 @@ Convex convex(span<double> sp) {
         if (s >= result.slop) {
           result.slop = s;
         } else {
-          ++k;
           goto kEnd;
         }
         break;
@@ -59,7 +60,6 @@ Convex convex(span<double> sp) {
         if (s <= result.slop) {
           result.slop = s;
         } else {
-          ++k;
           goto kEnd;
         }
         break;
@@ -68,7 +68,7 @@ Convex convex(span<double> sp) {
 
 kEnd:
   result.range = k0 - k;
-  for (int i = 0; i < result.range; ++i) {
+  for (int i = 0; i < result.range - 1; ++i) {
     double d = values[i] - (current - result.slop * (i + 1));
     if ((d > result.diff && direction == kConvex) ||
         (d < result.diff && direction == kConcave)) {

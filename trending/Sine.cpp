@@ -15,12 +15,17 @@ Sine sine(span<double> sp) {
 
   double xx = 0, xy = 0, yy = 0;
   size_t n = sp.size();
+
+  if (n < 3) {
+    return result;
+  }
+
   result.b = pi / (n - 1);
   for (size_t x = 0; x < n; ++x) {
     double y = sp[x];
-    x = x * result.b;
-    xx += sin(x) * sin(x);
-    xy += sin(x) * y;
+    double r = x * result.b;
+    xx += sin(r) * sin(r);
+    xy += sin(r) * y;
     yy += y * y;
   }
   result.a = xy / xx;

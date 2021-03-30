@@ -17,7 +17,7 @@ double lastRateOfAvg(span<double> sp);
 template <size_t R>
 std::vector<double> ma(span<double> sp) {
   std::vector<double> out;
-  for (size_t i = R - 1; i < sp.size(); ++i) {
+  for (size_t i = 0; i + R <= sp.size(); ++i) {
     out.push_back(avg(sp.subspan(i, R)));
   }
   return out;

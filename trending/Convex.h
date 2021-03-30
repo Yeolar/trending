@@ -9,9 +9,9 @@
 namespace trending {
 
 struct Convex {
-  int range;
-  double slop;
-  double diff;
+  int range = 0;
+  double slop = 0;
+  double diff = 0;
 };
 
 Convex convex(span<double> sp);

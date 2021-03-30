@@ -13,9 +13,9 @@ namespace trending {
  */
 
 struct Linear {
-  double a;
-  double b;
-  double sd;
+  double a = 0;
+  double b = 0;
+  double sd = 0;
 };
 
 Linear linear(span<double> sp);
