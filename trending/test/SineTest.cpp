@@ -21,7 +21,7 @@ TEST(Sine, sine) {
     };
     Sine result = sine(v);
     EXPECT_DOUBLE_EQ(1, result.a);
-    EXPECT_DOUBLE_EQ(0.52359877559829882, result.b);
-    EXPECT_DOUBLE_EQ(0.000000029802322387695312, result.sd);
+    EXPECT_NEAR(0.523598, result.b, 1e-6);
+    EXPECT_NEAR(0.000000, result.sd, 1e-6);
   }
 }
