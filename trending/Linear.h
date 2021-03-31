@@ -18,6 +18,6 @@ struct Linear {
   double sd = 0;
 };
 
-Linear linear(span<double> sp);
+Linear linear(span<const double> sp);
 
 } // namespace trending

@@ -10,7 +10,7 @@ namespace trending {
 
 const double pi = std::acos(-1);
 
-Sine sine(span<double> sp) {
+Sine sine(span<const double> sp) {
   Sine result;
 
   double xx = 0, xy = 0, yy = 0;

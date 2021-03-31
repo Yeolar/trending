@@ -18,6 +18,6 @@ struct Sine {
   double sd = 0;
 };
 
-Sine sine(span<double> sp);
+Sine sine(span<const double> sp);
 
 } // namespace trending

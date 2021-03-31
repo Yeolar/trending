@@ -14,6 +14,6 @@ struct Convex {
   double diff = 0;
 };
 
-Convex convex(span<double> sp);
+Convex convex(span<const double> sp);
 
 } // namespace trending

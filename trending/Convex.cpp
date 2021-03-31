@@ -19,7 +19,7 @@ static double slope(double y1, double y2, int a, int b) {
   return (y1 - y2) / (a - b);
 }
 
-Convex convex(span<double> sp) {
+Convex convex(span<const double> sp) {
   Convex result;
 
   if (sp.empty()) {

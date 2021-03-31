@@ -6,7 +6,7 @@
 
 namespace trending {
 
-Linear linear(span<double> sp) {
+Linear linear(span<const double> sp) {
   Linear result;
 
   double xx = 0, nx = 0, xy = 0, ny = 0, yy = 0;
